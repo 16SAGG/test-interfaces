@@ -1,0 +1,69 @@
+@property --current-gradient-color-primary {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: rgb(250, 254, 255);
+}
+
+@property --current-gradient-color-secondary {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: rgb(190, 222, 232);
+}
+
+@property --current-gradient-percentage-primary {
+  syntax: '<percentage>';
+  inherits: true;
+  initial-value: 30%;
+}
+
+@property --current-gradient-percentage-secondary {
+  syntax: '<percentage>';
+  inherits: true;
+  initial-value: 100%;
+}
+
+:root {
+  --gradient-color-primary: rgb(250, 254, 255);
+  --gradient-color-secondary-calm: rgb(190, 222, 232);
+  --gradient-color-secondary-danger: rgb(232, 203, 190);
+
+  --current-gradient-color-primary: var(--gradient-color-primary);
+  --current-gradient-color-secondary: var(--gradient-color-secondary-calm);
+}
+
+[data-theme="dark"]{
+  --gradient-color-primary: rgb(46, 48, 49);
+  --gradient-color-secondary-calm: rgb(140, 221, 246);
+  --gradient-color-secondary-danger: rgb(218, 148, 115);
+}
+
+[data-gradient-color-secondary="danger"] {
+  --current-gradient-color-secondary: var(--gradient-color-secondary-danger);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+main{
+  height: 80vh;
+  width: 80vw;
+}
+
+.background-gradient-linear{
+  background: linear-gradient(
+    120deg, 
+    var(--current-gradient-color-primary) var(--current-gradient-percentage-primary), 
+    var(--current-gradient-color-secondary) var(--current-gradient-percentage-secondary)
+  );
+  background-size: 200% 200%;
+  transition: 
+    --current-gradient-color-primary 0.6s ease,
+    --current-gradient-color-secondary 0.6s ease,
+    --current-gradient-percentage-primary 0.6s ease,
+    --current-gradient-percentage-secondary 0.6s ease;
+}

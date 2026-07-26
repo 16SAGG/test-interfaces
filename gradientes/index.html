@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+    <meta charset="UTF-8">
+    <title>Bento</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+    <script>
+        function changeCurrentGradientColorSecondary(colorName) {
+            document.documentElement.setAttribute('data-gradient-color-secondary', colorName);
+        }
+
+        function updatePercentage(value) {
+            document.documentElement.style.setProperty('--current-gradient-percentage-primary', `${value}%`);
+        }
+
+        function switchTheme(themeName) {
+            document.documentElement.setAttribute('data-theme', themeName);
+        }
+    </script>
+    <body class="background-gradient-linear">
+        <main>
+            <div style="display: flex; gap:24px;">
+                <div>
+                    <button onclick="changeCurrentGradientColorSecondary('calm')">Calm</button>
+                    <button onclick="changeCurrentGradientColorSecondary('danger')">Danger</button>
+                    <input type="range" min="0" max="100" value="30" oninput="updatePercentage(this.value)">
+                </div>
+                <div>
+                    <button onclick="switchTheme('default')">Default</button>
+                    <button onclick="switchTheme('dark')">Dark</button>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
